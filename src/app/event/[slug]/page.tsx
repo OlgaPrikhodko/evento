@@ -49,7 +49,7 @@ export default async function EventPage({ params }: EventPageProps) {
               Organized by <span className="italic">{event.organizerName}</span>
             </p>
 
-            <button className="bg-white/20 bg-blur text-lg capitalize mt-5 lg:mt-auto w-[95vw] sm:w-full py-2 border-white/10 border-2 rounded-md hover:scale-105 focus:scale-105 active:scale-[1.02] transition">
+            <button className="bg-white/20 bg-blur text-lg capitalize mt-5 lg:mt-auto w-[95vw] sm:w-full py-2 border-white/10 border-2 rounded-md state-effects">
               Get tickets
             </button>
           </div>
