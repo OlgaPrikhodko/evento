@@ -3,13 +3,15 @@ import H1 from "@/components/h1";
 import { Suspense } from "react";
 import Loading from "./loading";
 import { capitalize } from "@/lib/utils";
+import { Metadata } from "next";
 
 type EventsPageProps = {
   params: { city: string };
 };
 
-export function generateMetadata({ params }: EventsPageProps) {
+export function generateMetadata({ params }: EventsPageProps): Metadata {
   const city = params.city;
+
   return {
     title: city === "all" ? "All Events" : `Events in ${capitalize(city)}`,
   };
