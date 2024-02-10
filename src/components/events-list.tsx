@@ -1,4 +1,3 @@
-import { EventoEvent } from "@/lib/types";
 import EventCard from "./event-card";
 import { getEvents } from "@/lib/utils";
 
