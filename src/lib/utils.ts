@@ -1,6 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import prisma from "./db";
+import { notFound } from "next/navigation";
 
 // combine twMerge and clsx functions for conditions classes
 export function cn(...inputs: ClassValue[]) {
@@ -21,6 +22,10 @@ export async function getEvent(slug: string) {
       slug,
     },
   });
+
+  if (!event) {
+    return notFound();
+  }
 
   return event;
 }
