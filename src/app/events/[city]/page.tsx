@@ -5,11 +5,15 @@ import Loading from "./loading";
 import { capitalize } from "@/lib/utils";
 import { Metadata } from "next";
 
-type EventsPageProps = {
+type Props = {
   params: { city: string };
 };
 
-export function generateMetadata({ params }: EventsPageProps): Metadata {
+type EventsPageProps = Props & {
+  searchParams: { page: string };
+};
+
+export function generateMetadata({ params }: Props): Metadata {
   const city = params.city;
 
   return {
@@ -17,8 +21,12 @@ export function generateMetadata({ params }: EventsPageProps): Metadata {
   };
 }
 
-export default async function EventsPage({ params }: EventsPageProps) {
+export default async function EventsPage({
+  params,
+  searchParams,
+}: EventsPageProps) {
   const city = params.city;
+  const page = searchParams.page || 1;
 
   return (
     <main className="flex flex-col items-center py-24 px-[20px] min-h-[110vh]">
@@ -27,7 +35,7 @@ export default async function EventsPage({ params }: EventsPageProps) {
       </H1>
 
       <Suspense fallback={<Loading />}>
-        <EventsList city={city} />
+        <EventsList city={city} page={+page} />
       </Suspense>
     </main>
   );
