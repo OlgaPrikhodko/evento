@@ -18,6 +18,11 @@ export async function generateMetadata({
   };
 }
 
+export async function generateStaticParams() {
+  // top 2 most popular events
+  return [{ slug: "comedy-extravaganza" }, { slug: "dj-practice-session" }];
+}
+
 export default async function EventPage({ params }: EventPageProps) {
   const { slug } = params;
 
